@@ -1,0 +1,203 @@
+/*
+
+Copyright 2019 OXullo Intersecans <x@brainrapers.org>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+*/
+
+// Note: the following eagle-bundled ULPs have been used as a guidance:
+// * mountsmd.ulp
+// * bom.ulp
+// * cmd-change-swap-layer.ulp
+// * centroid-screamingcircuits-smd.ulp
+
+
+#usage "<b>JLCPCB BOM/CPL files generator</b>\n"
+       "<p>"
+       "Generates BOM and CPL files for JLCPCB SMT/TH dual side assembly service"
+       "https://jlcpcb.com/smt-assembly"
+       "<p>"
+       "Run the ULP from the board editor"
+       "<p>"
+       "<author>Author: OXullo Intersecans x@brainrapers.org</author>"
+
+
+int layer_id_map[] = { 1, 16 };
+UL_ELEMENT selected_elements[];
+
+string replace_commas(string s)
+{
+    while (strstr(s, ",") >= 0) {  // convert commas to spaces
+        string substitution_string = " ";
+        sprintf(s, "%s%s%s", strsub(s, 0, strstr(s, ",")), substitution_string, strsub(s, strstr(s, ",")+1));
+    }
+
+    return s;
+}
+
+// Dumbest implementation of fmod
+real angle_mod(real angle)
+{
+    while (angle < 0) {
+        angle += 360;
+    }
+
+    while (angle >= 360) {
+        angle -= 360;
+    }
+    return angle;
+}
+
+// Borrowed from e-brueckenklemmenverwaltung.ulp
+string strip(string s)
+{
+    int i, n;
+    string t;
+
+    while (s && isspace(s[0])) {
+        s = strsub(s, 1);
+    }
+
+    while (s && isspace(s[strlen(s) - 1])) {
+        s = strsub(s, 0, strlen(s) - 1);
+    }
+
+    for (i = 0; i < strlen(s); i++) {
+        if (!isspace(s[i])) {
+            t[n++] = s[i];
+        } else {
+            if ((strlen(s) > i+1) && isspace(s[i+1]));
+            else t[n++] = s[i];
+        }
+    }
+
+    s = t;
+
+    return s;
+}
+
+string get_lcsc_part(UL_ELEMENT E)
+{
+    E.attributes(A) {
+        if (A.name == "LCSC_PART" || A.name == "LCSC") {
+            return replace_commas(A.value);
+        }
+    }
+    return "";
+}
+
+int is_dnp(UL_ELEMENT E)
+{
+    E.attributes(A) {
+        if (A.name == "DNP") {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+if (board) board(B) {
+
+    string output_dir = dlgDirectory("Export files to", filedir(B.name));
+
+    if (output_dir == "") {
+        exit(0);
+    }
+
+    int element_count = 0;
+
+    // Gather the components that will appear in BOM/CPL
+    B.elements(E) if (E.populate && !is_dnp(E)) {
+        E.package.contacts(C) {
+            if (C.smd || C.pad) {
+                selected_elements[element_count++] = E;
+                break;
+            }
+        }
+    }
+
+    string base_path = (output_dir + "/" + 
+        strsub(filename(B.name), 0, strlen(filename(B.name)) - 4));
+
+    string cpl_filename = base_path + "_cpl.csv";
+    string bom_filename = base_path + "_bom.csv";
+
+    output(cpl_filename) {
+        printf("Designator,Mid X,Mid Y,Layer,Rotation\n");
+
+        for (int i = 0 ; i < element_count ; ++i) {
+            UL_ELEMENT E = selected_elements[i];
+            real angle = E.angle;
+
+            string layer = "Top";
+            if (E.mirror) {
+                layer = "Bottom";
+            }
+
+            E.attributes(A) {  // manually rotate the part
+                if (A.name == "JLC_ROTATION") {
+                    // Note: supporting only integer offsets
+                    angle = angle + strtol(A.value);
+                }
+            }
+
+            if (layer == "Bottom") {
+                angle += 180;
+            }
+
+            printf("%s,%5.2f,%5.2f,%s,%.1f\n",
+                E.name, u2mm(E.x), u2mm(E.y),
+                layer,
+                angle_mod(angle));
+        }
+    }
+
+    output(bom_filename) {
+        int i;
+        int indexes[];
+        numeric string values[];
+        numeric string footprints[];
+
+        for (i=0 ; i < element_count ; ++i) {
+            indexes[i] = i;
+            values[i] = selected_elements[i].value;
+            footprints[i] = selected_elements[i].footprint.name;
+        }
+        sort(element_count, indexes, values, footprints);
+
+        // Header
+        printf("Comment,Designator,Footprint,LCSC Part #\n");
+
+        string designators;
+        for (i = 0 ; i < element_count ; ++i) {
+            UL_ELEMENT E = selected_elements[indexes[i]];
+            string lcsc_part = get_lcsc_part(E);
+
+            if (strip(E.value) == "") {
+                // Elements with no values aren't aggregated
+                printf("%s,%s,%s,%s\n", "", replace_commas(E.name), replace_commas(E.footprint.name), lcsc_part);
+                designators = "";
+            } else if (i < element_count - 1
+                    && E.value == selected_elements[indexes[i + 1]].value
+                    && E.footprint.name == selected_elements[indexes[i + 1]].footprint.name) {
+                // Split elements that have different value or package
+                designators += " " + replace_commas(E.name);
+            } else {
+                designators += " " + replace_commas(E.name);
+                printf("%s,%s,%s,%s\n", replace_commas(E.value), strip(designators), replace_commas(E.footprint.name), lcsc_part);
+                designators = "";
+            }
+        }
+    }
+
+    dlgMessageBox("BOM and CPL files have been exported to: " + output_dir, "OK");
+
+} else {
+    dlgMessageBox("Run this ULP from a Board", "OK");
+    exit (0);
+}
