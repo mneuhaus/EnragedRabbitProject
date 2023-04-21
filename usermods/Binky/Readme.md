@@ -7,6 +7,13 @@ filtering which causes fales pulses on the "edge".
 So instead i created a new PCB based on the same small Omron sensor that is used on the KY-010 board, the [EE-SX398](https://omronfs.omron.com/en_US/ecb/products/pdf/en-ee_sx398_498.pdf).
 It's tiny, reliable and cheap, so i combined it onto a PCB with a schmitt filter to filter out false edge readings and also added a led like the TCRT5000 boards.
 
+### Binky Definition
+
+noun, plural bin·kies.<br />
+the playful twisting leap that a rabbit makes, usually with a 180–turn in midair.
+
+[Gif of a bunny doing a Binky](https://i.gifer.com/origin/eb/eb16649d507bedd98d8b4ef09b3748fc.gif)
+
 ### Binky Schematic and PCB
 
 ![](Images/BinkySchematic.png)
