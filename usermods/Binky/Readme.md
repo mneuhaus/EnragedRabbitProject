@@ -12,7 +12,7 @@ It's tiny, reliable and cheap, so i combined it onto a PCB with a schmitt filter
 noun, plural bin·kies.<br />
 the playful twisting leap that a rabbit makes, usually with a 180–turn in midair.
 
-![](https://i.gifer.com/origin/eb/eb16649d507bedd98d8b4ef09b3748fc.gif)
+[Gif of a bunny doing a Binky](https://i.gifer.com/origin/eb/eb16649d507bedd98d8b4ef09b3748fc.gif)
 
 ### Binky Schematic and PCB
 
