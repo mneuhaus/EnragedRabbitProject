@@ -7,6 +7,22 @@ filtering which causes fales pulses on the "edge".
 So instead i created a new PCB based on the same small Omron sensor that is used on the KY-010 board, the [EE-SX398](https://omronfs.omron.com/en_US/ecb/products/pdf/en-ee_sx398_498.pdf).
 It's tiny, reliable and cheap, so i combined it onto a PCB with a schmitt filter to filter out false edge readings and also added a led like the TCRT5000 boards.
 
+## Setup/Configuration
+
+1. Print Binky STLs with default voron print settings, make sure to print the slotted wheel in black to prevent light of the sensor passing through it
+2. push the slotted wheel onto the BMG gear with the push tool, by placing the side with the get teeth onto a flat surface, sliding over the slottet wheel loosly and then puttin the push tool on to to "tap" it into place lightly with a hammer, and i mean really lightly, don't just smash it ;)
+3. put the BMG Gear with the slotted wheel, pin and bearings into the bigger side of the encoder and put the binky pcb on top. release the brake by slightly pulling down the spring and make sure the slotted wheel can turn freely between the sensor block. if not make sure the slotted wheel is seated correctly (flat to the outside of the BMG gear).
+4. if everything runs smoothly put the whole encoder together and install on the ERCF
+5. change this `DEFAULT_ENCODER_RESOLUTION = 0.67` near the top of `~/ERCF-Software-V3/extras/ercf.py` to `DEFAULT_ENCODER_RESOLUTION = 1.0`
+6. run ERCF_CALIBRATE_ENCODER to update the encoder resolution config (see Encoder Calibration in the ERCF_Manual.pdf on page 111)
+
+## Resolution
+
+Binky uses a resolution of 1mm/pulse instead of the 0.67mm/pulse the old encoder produced because @moggieuk realized, that klipper can actually not keep up with the resolution of the old encoder on high speeds: 
+
+> The other problem is that the resolution is too high -- Klipper cannot reliably poll fast movements and steps can be lost.  This is especially true because the current encoder design can have very irregular waveform (pulses) -- short ones can get missed.  Binky reduces resolution to about 1mm (from 0.67 in current design) but has 50% duty cycle on the waveform meaning that Klipper can keep up with about 350mm/s move (i.e. above practical limits).  The other thing is that it just works - no fiddling with distance of sensor from BMG gear etc. 
+> It is so reliable now that it has exposed other issues that we are fixing in ERCF v2 and Happy Hare v2, namely Klipper can be slow to update on some occasions means that a prematurely read encoder will read short, or that moves in one direction are different from the other -- that was actually only discovered 2 days ago and a fix is almost done.
+
 ### Binky Definition
 
 noun, plural bin·kies.<br />
