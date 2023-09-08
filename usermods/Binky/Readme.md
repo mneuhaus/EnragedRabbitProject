@@ -7,6 +7,19 @@ filtering which causes fales pulses on the "edge".
 So instead i created a new PCB based on the same small Omron sensor that is used on the KY-010 board, the [EE-SX398](https://omronfs.omron.com/en_US/ecb/products/pdf/en-ee_sx398_498.pdf).
 It's tiny, reliable and cheap, so i combined it onto a PCB with a schmitt filter to filter out false edge readings and also added a led like the TCRT5000 boards.
 
+## PCB Availability
+
+If you don't want to produce the boards yourself there are currently 3 Shops where you can get a binky right now:
+
+| Name         | URL                                                            | Ships to  | 
+| ------------ | -------------------------------------------------------------- | --------- |
+| **My Shop**: | https://www.etsy.com/de/listing/1526104169/erkf-binky          | Worldwide |
+| **Lab4450**: | https://lab4450.com/product/ercf-binky/                        | Europe    |
+| **JB3D.uk**: | [https://jb3d.uk/](https://jb3d.uk/product/ercf-binky-pcb/)    | Worldwide |
+
+Feel free to produce and sell these yourself if you like, a small donation would be appreciated 😊
+Just drop me a DM on Discord if you'd like to be added to the list above
+
 ## Setup/Configuration
 
 1. Print Binky STLs with default voron print settings, make sure to print the slotted wheel in black to prevent light of the sensor passing through it
