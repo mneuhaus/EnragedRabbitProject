@@ -11,13 +11,14 @@ It's tiny, reliable and cheap, so i combined it onto a PCB with a schmitt filter
 
 If you don't want to produce the boards yourself there are currently 3 Shops where you can get a binky right now:
 
-| Name              | URL                                                      | Ships to  | 
-| ----------------- | -------------------------------------------------------- | --------- |
-| **My Shop**:      | https://www.etsy.com/de/listing/1526104169/erkf-binky    | Worldwide |
-| **Lab4450**:      | https://lab4450.com/product/ercf-binky/                  | Europe    |
-| **JB3D.uk**:      | https://jb3d.uk/product/ercf-binky-pcb/                  | Worldwide |
-| **pj3d.store**:   | https://pj3d.store/products/binky-pcb-sensor             | Worldwide |
-| **kris3d.de**:    | https://www.kris3d.de/products/ercf-binky-encoder        | Worldwide |
+| Name              | URL                                                          | Ships to  | 
+| ----------------- | ------------------------------------------------------------ | --------- |
+| **My Shop**:      | https://www.etsy.com/de/listing/1526104169/erkf-binky        | Worldwide |
+| **Lab4450**:      | https://lab4450.com/product/ercf-binky/                      | Europe    |
+| **JB3D.uk**:      | https://jb3d.uk/product/ercf-binky-pcb/                      | Worldwide |
+| **pj3d.store**:   | https://pj3d.store/products/binky-pcb-sensor                 | Worldwide |
+| **kris3d.de**:    | https://www.kris3d.de/products/ercf-binky-encoder            | Worldwide |
+| **fabreeko.com**: | https://www.fabreeko.com/products/binky-for-ercf-by-mneuhaus | Worldwide |
 
 Feel free to produce and sell these yourself if you like, a small donation would be appreciated 😊  ([donate through PayPal](https://www.paypal.com/donate/?hosted_button_id=5Y3M77S3U3EEW))<br />
 Just drop me a DM on Discord if you'd like to be added to the list above
