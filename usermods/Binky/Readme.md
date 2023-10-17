@@ -13,7 +13,6 @@ If you don't want to produce the boards yourself there are currently 3 Shops whe
 
 | Name              | URL                                                          | Ships to  | 
 | ----------------- | ------------------------------------------------------------ | --------- |
-| **My Shop**:      | https://www.etsy.com/de/listing/1526104169/erkf-binky        | Worldwide |
 | **Lab4450**:      | https://lab4450.com/product/ercf-binky/                      | Europe    |
 | **JB3D.uk**:      | https://jb3d.uk/product/ercf-binky-pcb/                      | Worldwide |
 | **pj3d.store**:   | https://pj3d.store/products/binky-pcb-sensor                 | Worldwide |
