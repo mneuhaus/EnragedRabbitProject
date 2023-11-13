@@ -9,7 +9,7 @@ It's tiny, reliable and cheap, so i combined it onto a PCB with a schmitt filter
 
 ## PCB Availability
 
-If you don't want to produce the boards yourself there are currently 3 Shops where you can get a binky right now:
+If you don't want to produce the boards yourself there are currently 7 Shops where you can get a binky right now:
 
 | Name                 | URL                                                                        | Ships to  | 
 | -------------------- | -------------------------------------------------------------------------- | --------- |
