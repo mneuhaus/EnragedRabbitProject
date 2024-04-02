@@ -16,10 +16,10 @@ If you don't want to produce the boards yourself there are currently 7 Shops whe
 | **Lab4450**:         | https://lab4450.com/product/ercf-binky/                                    | Europe    |
 | **JB3D.uk**:         | https://jb3d.uk/product/ercf-binky-pcb/                                    | Worldwide |
 | **pj3d.store**:      | https://pj3d.store/products/binky-pcb-sensor                               | Worldwide |
-| **kris3d.de**:       | https://www.kris3d.de/products/ercf-binky-encoder                          | Worldwide |
 | **fabreeko.com**:    | https://www.fabreeko.com/products/binky-for-ercf-by-mneuhaus               | Worldwide |
 | **sakoda.booth.pm**  | https://sakoda.booth.pm/items/5209966                                      | Japan     |
 | **store.isiks.tech** | https://store.isiks.tech/products/binky-ercf-filament-encoder-sensor-pcb   | US/Canada |
+| **spool3d.ca**       | https://spool3d.ca/ercf-binky-encoder-by-mneuhaus/                         | Canada    |
 
 Feel free to produce and sell these yourself if you like, a small donation would be appreciated 😊  ([donate through PayPal](https://www.paypal.com/donate/?hosted_button_id=5Y3M77S3U3EEW))<br />
 Just drop me a DM on Discord if you'd like to be added to the list above
