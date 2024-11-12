@@ -11,15 +11,16 @@ It's tiny, reliable and cheap, so i combined it onto a PCB with a schmitt filter
 
 If you don't want to produce the boards yourself there are currently 7 Shops where you can get a binky right now:
 
-| Name                 | URL                                                                        | Ships to  | 
-| -------------------- | -------------------------------------------------------------------------- | --------- |
-| **Lab4450**:         | https://lab4450.com/product/ercf-binky/                                    | Europe    |
-| **JB3D.uk**:         | https://jb3d.uk/product/ercf-binky-pcb/                                    | Worldwide |
-| **pj3d.store**:      | https://pj3d.store/products/binky-pcb-sensor                               | Worldwide |
-| **fabreeko.com**:    | https://www.fabreeko.com/products/binky-for-ercf-by-mneuhaus               | Worldwide |
-| **sakoda.booth.pm**  | https://sakoda.booth.pm/items/5209966                                      | Japan     |
-| **store.isiks.tech** | https://store.isiks.tech/products/binky-ercf-filament-encoder-sensor-pcb   | US/Canada |
-| **spool3d.ca**       | https://spool3d.ca/ercf-binky-encoder-by-mneuhaus/                         | Worldwide |
+| Name                 | URL                                                                        | Ships to     | 
+| -------------------- | -------------------------------------------------------------------------- | ------------ |
+| **Lab4450**:         | https://lab4450.com/product/ercf-binky/                                    | Europe       |
+| **JB3D.uk**:         | https://jb3d.uk/product/ercf-binky-pcb/                                    | Worldwide    |
+| **pj3d.store**:      | https://pj3d.store/products/binky-pcb-sensor                               | Worldwide    |
+| **fabreeko.com**:    | https://www.fabreeko.com/products/binky-for-ercf-by-mneuhaus               | Worldwide    |
+| **sakoda.booth.pm**  | https://sakoda.booth.pm/items/5209966                                      | Japan        |
+| **store.isiks.tech** | https://store.isiks.tech/products/binky-ercf-filament-encoder-sensor-pcb   | US/Canada    |
+| **spool3d.ca**       | https://spool3d.ca/ercf-binky-encoder-by-mneuhaus/                         | Worldwide    |
+| **LaserNThing**      | https://www.etsy.com/ca/listing/1685116208/ercf-v2-binky-encoder           | Canada/Other |
 
 Feel free to produce and sell these yourself if you like, a small donation would be appreciated 😊  ([donate through PayPal](https://www.paypal.com/donate/?hosted_button_id=5Y3M77S3U3EEW))<br />
 Just drop me a DM on Discord if you'd like to be added to the list above
